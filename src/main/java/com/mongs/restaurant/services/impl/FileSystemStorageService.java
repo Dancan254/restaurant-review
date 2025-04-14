@@ -3,19 +3,24 @@ package com.mongs.restaurant.services.impl;
 import com.mongs.restaurant.exceptions.StorageException;
 import com.mongs.restaurant.services.StorageService;
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 
+@Slf4j
 public class FileSystemStorageService implements StorageService {
 
     @Value("${app.storage.location:uploads}")
@@ -63,7 +68,18 @@ public class FileSystemStorageService implements StorageService {
     }
 
     @Override
-    public Optional<Resource> loadFileAsResource(String id) {
-        return Optional.empty();
+    public Optional<Resource> loadFileAsResource(String filename) {
+        Path file = rootLocation.resolve(filename);
+        try {
+            Resource resource = new UrlResource(file.toUri());
+            if (resource.exists() || resource.isReadable()) {
+                return Optional.of(resource);
+            } else {
+                return Optional.empty();
+            }
+        } catch (MalformedURLException e){
+            log.warn("Failed to load file as resource: {}", filename, e);
+            return Optional.empty();
+        }
     }
 }
