@@ -3,11 +3,13 @@ package com.mongs.restaurant.services.impl;
 import com.mongs.restaurant.exceptions.StorageException;
 import com.mongs.restaurant.services.StorageService;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,6 +23,8 @@ import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 
 @Slf4j
+@Service
+@RequiredArgsConstructor
 public class FileSystemStorageService implements StorageService {
 
     @Value("${app.storage.location:uploads}")
