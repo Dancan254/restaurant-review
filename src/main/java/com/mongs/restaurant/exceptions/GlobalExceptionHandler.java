@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorDto, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    //lets catch all other exceptions
+    //let's catch all other exceptions
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDto> handleException(Exception e) {
         log.error("An unexpected error occurred: {}", e.getMessage());
