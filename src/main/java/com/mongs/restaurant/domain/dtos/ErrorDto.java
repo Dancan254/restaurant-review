@@ -1,4 +1,4 @@
-package com.mongs.restaurant.domain.entities.dtos;
+package com.mongs.restaurant.domain.dtos;
 
 import lombok.*;
 

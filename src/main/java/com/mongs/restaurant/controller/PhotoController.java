@@ -1,7 +1,7 @@
 package com.mongs.restaurant.controller;
 
-import com.mongs.restaurant.domain.entities.Photo;
-import com.mongs.restaurant.domain.entities.dtos.PhotoDto;
+import com.mongs.restaurant.domain.entity.Photo;
+import com.mongs.restaurant.domain.dtos.PhotoDto;
 import com.mongs.restaurant.mappers.PhotoMapper;
 import com.mongs.restaurant.services.PhotoService;
 import lombok.RequiredArgsConstructor;

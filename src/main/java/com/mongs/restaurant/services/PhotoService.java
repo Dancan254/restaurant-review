@@ -1,6 +1,6 @@
 package com.mongs.restaurant.services;
 
-import com.mongs.restaurant.domain.entities.Photo;
+import com.mongs.restaurant.domain.entity.Photo;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 

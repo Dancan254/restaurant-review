@@ -1,4 +1,4 @@
-package com.mongs.restaurant.domain.entities;
+package com.mongs.restaurant.domain.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

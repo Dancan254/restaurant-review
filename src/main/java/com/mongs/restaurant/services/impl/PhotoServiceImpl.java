@@ -1,6 +1,6 @@
 package com.mongs.restaurant.services.impl;
 
-import com.mongs.restaurant.domain.entities.Photo;
+import com.mongs.restaurant.domain.entity.Photo;
 import com.mongs.restaurant.services.PhotoService;
 import com.mongs.restaurant.services.StorageService;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package com.mongs.restaurant.mappers;
 
-import com.mongs.restaurant.domain.entities.Photo;
-import com.mongs.restaurant.domain.entities.dtos.PhotoDto;
+import com.mongs.restaurant.domain.entity.Photo;
+import com.mongs.restaurant.domain.dtos.PhotoDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
