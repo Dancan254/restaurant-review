@@ -4,6 +4,7 @@ import com.mongs.restaurant.domain.dtos.ErrorDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -21,6 +22,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorDto> handleBaseException(BaseException e) {
         log.error("Base exception occurred: {}", e.getMessage());
        return buildError(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred.");
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorDto> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        log.error("MethodArgumentNotValidException occurred: {}", e.getMessage());
+        return buildError(HttpStatus.BAD_REQUEST, "Invalid input data.");
     }
 
     //let's catch all other exceptions
